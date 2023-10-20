@@ -59,8 +59,3 @@ def lee(archivo):
     except:
         objeto = None
     return objeto
-
-def reservarButaca():
-    """
-    """
-    return
