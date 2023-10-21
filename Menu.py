@@ -7,8 +7,6 @@
 #Importacion de librerias
 from LabPOO import *
 #Menu
-
-#Programa principal
 def menu4():
     try:
         print("1. Mostrar todas las reservas.")
@@ -38,7 +36,8 @@ def menu():
         opcion = int(input("Ingrese la opción que desea: "))
         if opcion >0 and opcion < 6:
             if opcion == 1:
-                return
+                reservarButaca()
+                return 
             if opcion == 2:
                 return
             if opcion == 3:
@@ -50,3 +49,5 @@ def menu():
     except ValueError:
         print("Debe ingresar un número entero.")
         return menu()
+#Programa principal
+menu()

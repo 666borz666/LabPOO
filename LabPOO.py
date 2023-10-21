@@ -7,6 +7,7 @@
 #Importacion de librerias
 import pickle
 import os
+import random
 #Definicion de clases
 class Reserva:
     idReserva = 0
@@ -40,8 +41,9 @@ class Reserva:
     def reservado (self, reservado):
         self.reservado = reservado
         return
-    
 #definicion de funciones
+reservaciones = Reserva()
+
 def graba(archivo, objeto):
     try:
         f = open(archivo, "wb")
@@ -59,3 +61,44 @@ def lee(archivo):
     except:
         objeto = None
     return objeto
+
+def asignarAsiento():
+    """
+    """
+    asiento = []
+    print("Eliga el asiento que desea reservar: ")
+    letraAsiento = input("Ingrese la letra del asiento: ")
+    numeroAsiento = int(input("Ingrese el número del asiento: "))
+    asiento.append(letraAsiento)
+    asiento.append(numeroAsiento)
+    return asiento
+
+def reservarButaca():
+    """
+    """
+    return  
+
+def modificarFuncion():
+    """
+    """
+    return
+
+def eliminarReservacion():
+    """
+    """
+    return
+
+def mostrarTodasFunc():
+    """
+    """
+    return
+
+def mostrarFuncMes():
+    """
+    """
+    return
+
+def mostrarFuncCedula():
+    """
+    """
+    return
