@@ -62,43 +62,86 @@ def lee(archivo):
         objeto = None
     return objeto
 
-def asignarAsiento():
-    """
-    """
-    asiento = []
-    print("Eliga el asiento que desea reservar: ")
-    letraAsiento = input("Ingrese la letra del asiento: ")
-    numeroAsiento = int(input("Ingrese el número del asiento: "))
-    asiento.append(letraAsiento)
-    asiento.append(numeroAsiento)
-    return asiento
-
 def reservarButaca():
-    """
-    """
-    return  
+    reserva = Reserva()
+    reserva.idReserva = int(input("Ingrese el ID de la reserva: "))
+    reserva.sala = int(input("Ingrese el número de sala: "))
+    reserva.funcion = input("Ingrese la función: ")
+    asientos = input("Ingrese los asientos separados por comas: ")
+    reserva.asiento = [int(a) for a in asientos.split(",")]
+    reserva.cedula = int(input("Ingrese el número de cédula: "))
+    reserva.reservado = True
+    graba("reservas.dat", reserva)
+    print("Reserva exitosa.")
 
 def modificarFuncion():
-    """
-    """
-    return
+    id_reserva = int(input("Ingrese el ID de la reserva que desea modificar: "))
+    reserva = lee("reservas.dat")
+    if reserva:
+        if reserva.idReserva == id_reserva:
+            nueva_funcion = input("Ingrese la nueva función: ")
+            reserva.funcion = nueva_funcion
+            graba("reservas.dat", reserva)
+            print("Función modificada con éxito.")
+        else:
+            print("ID de reserva no encontrado.")
+    else:
+        print("No hay reservas disponibles.")
 
 def eliminarReservacion():
-    """
-    """
-    return
+    id_reserva = int(input("Ingrese el ID de la reserva que desea eliminar: "))
+    reserva = lee("reservas.dat")
+    if reserva:
+        if reserva.idReserva == id_reserva:
+            reserva.idReserva = 0
+            reserva.sala = 0
+            reserva.funcion = ""
+            reserva.asiento = []
+            reserva.cedula = 0
+            reserva.reservado = False
+            graba("reservas.dat", reserva)
+            print("Reserva eliminada con éxito.")
+        else:
+            print("ID de reserva no encontrado.")
+    else:
+        print("No hay reservas disponibles.")
 
-def mostrarTodasFunc():
-    """
-    """
-    return
+def mostrarTodasReservas():
+    reserva = lee("reservas.dat")
+    if reserva:
+        print("ID de Reserva:", reserva.idReserva)
+        print("Número de Sala:", reserva.sala)
+        print("Función:", reserva.funcion)
+        print("Asientos:", reserva.asiento)
+        print("Cédula:", reserva.cedula)
+        print("Reservado:", reserva.reservado)
+    else:
+        print("No hay reservas disponibles.")
 
 def mostrarFuncMes():
-    """
-    """
-    return
-
+    mes_deseado = input("Ingrese el número de mes a mostrar (1=Enero, 2=Febrero, etc.): ")
+    reservas = lee("reservas.dat")
+    if reservas:
+        for reserva in reservas:
+            if reserva.funcion.find(f"{mes_deseado}/") != -1:
+                print("ID de Reserva:", reserva.idReserva)
+                print("Número de Sala:", reserva.sala)
+                print("Función:", reserva.funcion)
+                print("Asientos:", reserva.asiento)
+                print("Cédula:", reserva.cedula)
+                print("Reservado:", reserva.reservado)
+    else:
+        print("No hay reservas disponibles.")
+        
 def mostrarFuncCedula():
-    """
-    """
-    return
+    cedula = int(input("Ingrese el número de cédula a buscar: "))
+    reserva = lee("reservas.dat")
+    if reserva and reserva.cedula == cedula:
+        print("ID de Reserva:", reserva.idReserva)
+        print("Número de Sala:", reserva.sala)
+        print("Función:", reserva.funcion)
+        print("Asientos:", reserva.asiento)
+        print("Cédula:", reserva.cedula)
+        print("Reservado:", reserva.reservado)
+    else:
+        print("No se encontraron reservas para la cédula especificada.")

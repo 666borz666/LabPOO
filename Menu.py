@@ -16,10 +16,13 @@ def menu4():
         opcion = int(input("Ingrese la opción que desea: "))
         if opcion >0 and opcion < 5:
             if opcion == 1:
+                mostrarTodasReservas()
                 return
             if opcion == 2:
+                mostrarFuncMes()
                 return
             if opcion == 3:
+                mostrarFuncCedula()
                 return
             if opcion == 4:
                 return menu()
@@ -39,8 +42,10 @@ def menu():
                 reservarButaca()
                 return 
             if opcion == 2:
+                modificarFuncion()
                 return
             if opcion == 3:
+                eliminarReservacion()
                 return
             if opcion == 4:
                 return menu4()
