@@ -6,8 +6,7 @@
 ################################################################################
 #Importacion de librerias
 import pickle
-import os
-import random
+from Menu import *
 #Definicion de clases
 class Reserva:
     idReserva = 0
@@ -73,6 +72,7 @@ def reservarButaca():
     reserva.reservado = True
     graba("reservas.dat", reserva)
     print("Reserva exitosa.")
+    return menu()
 
 def modificarFuncion():
     id_reserva = int(input("Ingrese el ID de la reserva que desea modificar: "))
@@ -87,6 +87,7 @@ def modificarFuncion():
             print("ID de reserva no encontrado.")
     else:
         print("No hay reservas disponibles.")
+    return menu()
 
 def eliminarReservacion():
     id_reserva = int(input("Ingrese el ID de la reserva que desea eliminar: "))
@@ -105,6 +106,7 @@ def eliminarReservacion():
             print("ID de reserva no encontrado.")
     else:
         print("No hay reservas disponibles.")
+    return menu()
 
 def mostrarTodasReservas():
     reserva = lee("reservas.dat")
@@ -117,6 +119,7 @@ def mostrarTodasReservas():
         print("Reservado:", reserva.reservado)
     else:
         print("No hay reservas disponibles.")
+    return menu()
 
 def mostrarFuncMes():
     mes_deseado = input("Ingrese el número de mes a mostrar (1=Enero, 2=Febrero, etc.): ")
@@ -132,6 +135,7 @@ def mostrarFuncMes():
                 print("Reservado:", reserva.reservado)
     else:
         print("No hay reservas disponibles.")
+    return menu()
         
 def mostrarFuncCedula():
     cedula = int(input("Ingrese el número de cédula a buscar: "))
@@ -145,3 +149,4 @@ def mostrarFuncCedula():
         print("Reservado:", reserva.reservado)
     else:
         print("No se encontraron reservas para la cédula especificada.")
+    return menu()
